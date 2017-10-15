@@ -77,7 +77,7 @@ module.exports = function (RED) {
         },
         auth: {
           user: "farshadahmadighohandizi",
-          pass: "farshad@71!"//,
+          pass: "Farshad@71!"//,
           //sendImmediately: false
         }
       };
