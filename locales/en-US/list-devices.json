@@ -5,8 +5,8 @@
             "groupName": "Group Name",
             "range": {
                 "label": "Define the start and end offset values",
-                "startOffset": "0",
-                "endOffset": "0"
+                "startOffset": "Start Offset",
+                "endOffset": "End Offset"
             }
         }
     },

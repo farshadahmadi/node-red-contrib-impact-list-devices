@@ -68,12 +68,12 @@
         <label for="node-input-defineRange" style="width: 70%;"><span data-i18n="listDevices.options.range.label"></span></label>
         <div style="margin-left: 20px" class="node-input-defineRange-row hide">
             <div class="form-row">
-                <label for="node-input-startOffset"><span data-i18n="listDevices.options.range.startOffset"></span></label>
-                <input type="text" id="node-input-startOffset">
+                <label for="node-input-start-offset"><span data-i18n="listDevices.options.range.startOffset"></span></label>
+                <input type="text" id="node-input-start-offset">
             </div>
             <div class="form-row">
-                <label for="node-input-endOffset"><span data-i18n="listDevices.options.range.endOffset"></span></label>
-                <input type="text" id="node-input-endOffset">
+                <label for="node-input-end-offset"><span data-i18n="listDevices.options.range.endOffset"></span></label>
+                <input type="text" id="node-input-end-offset">
             </div>
         </div>
     </div>
@@ -124,6 +124,8 @@
         defaults: {
             name: {value:""},
             "group-name": {value:""},
+            "start-offset": {value:"0"},
+            "end-offset": {value:"0"},
             //method:{value:"GET"},
             ret: {value:"txt"},
             //url:{value:""},
