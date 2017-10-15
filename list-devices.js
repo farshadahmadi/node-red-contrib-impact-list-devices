@@ -9,6 +9,8 @@ module.exports = function (RED) {
     var node = this;
     //var nodeUrl = n.url;
     var nodeFollowRedirects = n["follow-redirects"];
+    var startOffset = n["start-offset"];
+    var endOffset = n["end-offset"];
     //var isTemplatedUrl = (nodeUrl || "").indexOf("{{") != -1;
     //var nodeMethod = n.method || "GET";
     /*if (n.tls) {
@@ -32,7 +34,7 @@ module.exports = function (RED) {
       //var url = nodeUrl || msg.url;
       var groupName = msg.groupName || n["group-name"];
       //var url = msg.url || "http://api.iot.nokia.com:9090/m2m/endpoints?startOffset=1&endOffset=2&groupName=DM.IMPACT.EUROPE.BELLLABS.SIOTAD";
-      var url = msg.url || "http://api.iot.nokia.com:9090/m2m/endpoints?startOffset=0&endOffset=0&groupName=" + groupName;
+      var url = msg.url || "http://api.iot.nokia.com:9090/m2m/endpoints?startOffset=" + startOffset + "&endOffset=" + endOffset + "&groupName=" + groupName;
       /*if (msg.url && nodeUrl && (nodeUrl !== msg.url)) { // revert change below when warning is finally removed
         node.warn(RED._("common.errors.nooverride"));
       }
