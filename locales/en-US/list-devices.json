@@ -1,4 +1,10 @@
 {
+    "listDevices": {
+        "options": {
+            "label": "Configure options for listing devices",
+            "groupname": "Group Name"
+        }
+    },
     "common": {
         "label": {
             "payload": "Payload",
