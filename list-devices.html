@@ -155,6 +155,12 @@
                     $('#node-input-endOffset').val('0');
                 }
             });
+            if (this["start-offset"] || this["end-offset"]) {
+                $('#node-input-defineRange').prop('checked', true);
+            } else {
+                $('#node-input-defineRange').prop('checked', false);
+            }
+            $("#node-input-defineRange").change();
             /*if (this.credentials.user || this.credentials.has_password) {
                 $('#node-input-useAuth').prop('checked', true);
             } else {
