@@ -2,7 +2,7 @@
     "listDevices": {
         "options": {
             "label": "Configure options for listing devices",
-            "groupname": "Group Name"
+            "groupName": "Group Name"
         }
     },
     "common": {
