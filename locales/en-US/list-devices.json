@@ -2,7 +2,12 @@
     "listDevices": {
         "options": {
             "label": "Configure options for listing devices",
-            "groupName": "Group Name"
+            "groupName": "Group Name",
+            "range": {
+                "label": "Define the start and end offset values",
+                "startOffset": "0",
+                "endOffset": "0"
+            }
         }
     },
     "common": {

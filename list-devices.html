@@ -59,13 +59,24 @@
     </div -->
 
 
-    <!-- div class="form-row" -->
-      <!-- label style="width: 70%;"><span data-i18n="listDevices.options.label"></span></label -->
     <div class="form-row">
         <label for="node-input-group-name"><i class="fa fa-tag"></i> <span data-i18n="listDevices.options.groupName"></span></label>
         <input type="text" id="node-input-group-name" data-i18n="[placeholder]listDevices.options.groupName">
     </div>
-    <!-- /div -->
+    <div class="form-row">
+        <input type="checkbox" id="node-input-defineRange" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-defineRange" style="width: 70%;"><span data-i18n="listDevices.options.range.label"></span></label>
+        <div style="margin-left: 20px" class="node-input-defineRange-row hide">
+            <div class="form-row">
+                <label for="node-input-startOffset"><span data-i18n="listDevices.options.range.startOffset"></span></label>
+                <input type="text" id="node-input-startOffset">
+            </div>
+            <div class="form-row">
+                <label for="node-input-endOffset"><span data-i18n="listDevices.options.range.endOffset"></span></label>
+                <input type="text" id="node-input-endOffset">
+            </div>
+        </div>
+    </div>
     <div class="form-row">
         <label for="node-input-ret"><i class="fa fa-arrow-left"></i> <span data-i18n="httpin.label.return"></span></label>
         <select type="text" id="node-input-ret" style="width:70%;">
@@ -131,18 +142,18 @@
         },
         labelStyle: function() {
             return this.name?"node_label_italic":"";
-        }/*,
+        },
         oneditprepare: function() {
-            $("#node-input-useAuth").change(function() {
+            $("#node-input-defineRange").change(function() {
                 if ($(this).is(":checked")) {
-                    $(".node-input-useAuth-row").show();
+                    $(".node-input-defineRange-row").show();
                 } else {
-                    $(".node-input-useAuth-row").hide();
-                    $('#node-input-user').val('');
-                    $('#node-input-password').val('');
+                    $(".node-input-defineRange-row").hide();
+                    $('#node-input-startOffset').val('0');
+                    $('#node-input-endOffset').val('0');
                 }
             });
-            if (this.credentials.user || this.credentials.has_password) {
+            /*if (this.credentials.user || this.credentials.has_password) {
                 $('#node-input-useAuth').prop('checked', true);
             } else {
                 $('#node-input-useAuth').prop('checked', false);
@@ -164,7 +175,7 @@
             updateTLSOptions();
             $("#node-input-usetls").on("click",function() {
                 updateTLSOptions();
-            });
+            });*/
             $("#node-input-ret").change(function() {
                 if ($("#node-input-ret").val() === "obj") {
                     $("#tip-json").show();
@@ -172,7 +183,7 @@
                     $("#tip-json").hide();
                 }
             });
-        },
+        }/*,
         oneditsave: function() {
             if (!$("#node-input-usetls").is(':checked')) {
                 $("#node-input-tls").val("_ADD_");
