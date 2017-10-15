@@ -30,7 +30,9 @@ module.exports = function (RED) {
       });
 
       //var url = nodeUrl || msg.url;
-      var url = msg.url || "http://api.iot.nokia.com:9090/m2m/endpoints?startOffset=1&endOffset=2&groupName=DM.IMPACT.EUROPE.BELLLABS.SIOTAD";
+      var groupName = msg.groupName || n["group-name"];
+      //var url = msg.url || "http://api.iot.nokia.com:9090/m2m/endpoints?startOffset=1&endOffset=2&groupName=DM.IMPACT.EUROPE.BELLLABS.SIOTAD";
+      var url = msg.url || "http://api.iot.nokia.com:9090/m2m/endpoints?startOffset=0&endOffset=0&groupName=" + groupName;
       /*if (msg.url && nodeUrl && (nodeUrl !== msg.url)) { // revert change below when warning is finally removed
         node.warn(RED._("common.errors.nooverride"));
       }
