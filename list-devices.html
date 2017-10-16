@@ -93,8 +93,8 @@
 </script>
 
 <script type="text/x-red" data-help-name="list-devices">
-    <p>Provides a node for making http requests.</p>
-    <!-- p>The URL and HTTP method can be configured in the node, if they are left blank they should be set in an incoming message on <code>msg.url</code> and <code>msg.method</code>:</p>
+    <!-- p>Provides a node for making http requests.</p>
+    <p>The URL and HTTP method can be configured in the node, if they are left blank they should be set in an incoming message on <code>msg.url</code> and <code>msg.method</code>:</p>
     <ul>
         <li><code>url</code>, if set, is used as the url of the request. Must start with http: or https:</li>
         <li><code>method</code>, if set, is used as the HTTP method of the request.
@@ -115,6 +115,14 @@
         <li><code>headers</code> is an object containing the response headers</li>
     </ul>
     <p><b>Note</b>: If you need to configure a proxy please add <b>http_proxy=...</b> to your environment variables and restart Node-RED.</p -->
+    
+    <p>Provides a node to retrieve the total number of devices in a specified group. It is also possible to retrieve the list of device serial numbres by specifying the start and end offset values.</p>
+    <p>The group name and start/end offset values can be configured in the node. If group name is left blank, it should be set in an incomming <code>msg.groupName</code>.</p>
+    <ul>
+        <li><code>groupName</code>, if set, is used as the group name for wich rgistered devices will be listed.</li>
+        <li><code>start-offset</code>, if set, is used as the start offset for listing devices.
+        <li><code>end-offset</code>, if set, is used as the end offset for listing devices.
+    </ul>
 </script>
 
 <script type="text/javascript">
