@@ -7,15 +7,9 @@ module.exports = function (RED) {
   function HTTPRequest(n) {
     RED.nodes.createNode(this, n);
     var node = this;
-    //var nodeUrl = n.url;
     var nodeFollowRedirects = n["follow-redirects"];
     var startOffset = n["start-offset"];
     var endOffset = n["end-offset"];
-    //var isTemplatedUrl = (nodeUrl || "").indexOf("{{") != -1;
-    //var nodeMethod = n.method || "GET";
-    /*if (n.tls) {
-      var tlsNode = RED.nodes.getNode(n.tls);
-    }*/
     this.ret = n.ret || "txt";
     if (RED.settings.httpRequestTimeout) {
       this.reqTimeout = parseInt(RED.settings.httpRequestTimeout) || 120000;
@@ -31,25 +25,8 @@ module.exports = function (RED) {
         text: "httpin.status.requesting"
       });
 
-      //var url = nodeUrl || msg.url;
       var groupName = msg.groupName || n["group-name"];
-      //var url = msg.url || "http://api.iot.nokia.com:9090/m2m/endpoints?startOffset=1&endOffset=2&groupName=DM.IMPACT.EUROPE.BELLLABS.SIOTAD";
       var url = msg.url || "http://api.iot.nokia.com:9090/m2m/endpoints?startOffset=" + (startOffset || 0) + "&endOffset=" + (endOffset || 0) + "&groupName=" + groupName;
-      /*if (msg.url && nodeUrl && (nodeUrl !== msg.url)) { // revert change below when warning is finally removed
-        node.warn(RED._("common.errors.nooverride"));
-      }
-      if (isTemplatedUrl) {
-        url = mustache.render(nodeUrl, msg);
-      }
-      if (!url) {
-        node.error(RED._("httpin.errors.no-url"), msg);
-        node.status({
-          fill: "red",
-          shape: "ring",
-          text: (RED._("httpin.errors.no-url"))
-        });
-        return;
-      }*/
       // url must start http:// or https:// so assume http:// if not set
       if (!((url.indexOf("http://") === 0) || (url.indexOf("https://") === 0))) {
         if (tlsNode) {
@@ -59,14 +36,7 @@ module.exports = function (RED) {
         }
       }
 
-      //var method = nodeMethod.toUpperCase() || "GET";
       var method = "GET";
-      /*if (msg.method && n.method && (n.method !== "use")) { // warn if override option not set
-        node.warn(RED._("common.errors.nooverride"));
-      }
-      if (msg.method && n.method && (n.method === "use")) {
-        method = msg.method.toUpperCase(); // use the msg parameter
-      }*/
       if(msg.method){
         method = msg.method.toUpperCase(); // use the msg parameter
       }
@@ -81,8 +51,7 @@ module.exports = function (RED) {
         },
         auth: {
           user: "farshadahmadighohandizi",
-          pass: "Farshad@71!"//,
-          //sendImmediately: false
+          pass: "Farshad@71!",
         }
       };
 
@@ -99,35 +68,6 @@ module.exports = function (RED) {
           }
         }
       }
-
-      /*if (msg.payload && (method == "POST" || method == "PUT" || method == "PATCH")) {
-        if (opts.headers['content-type'] == 'application/x-www-form-urlencoded') {
-          opts.form = msg.payload;
-        } else {
-          if (typeof msg.payload === "string" || Buffer.isBuffer(msg.payload)) {
-            opts.body = msg.payload;
-          } else if (typeof msg.payload == "number") {
-            opts.body = msg.payload + "";
-          } else {
-            opts.body = JSON.stringify(msg.payload);
-            if (opts.headers['content-type'] == null) {
-              opts.headers['content-type'] = "application/json";
-            }
-          }
-        }
-      }*/
-
-      /*if (this.credentials && this.credentials.user) {
-        opts.auth = {
-          user: this.credentials.user,
-          pass: this.credentials.password,
-          sendImmediately: false
-        }
-      }*/
-
-      /*if (tlsNode) {
-        tlsNode.addTLSOptions(opts);
-      }*/
 
       request(opts, function (error, response, body) {
         node.status({});
@@ -181,17 +121,5 @@ module.exports = function (RED) {
     });
   }
 
-  /*RED.nodes.registerType("www-request", HTTPRequest, {
-    credentials: {
-      user: {
-        type: "text"
-      },
-      password: {
-        type: "password"
-      }
-    }
-  });*/
-  
   RED.nodes.registerType("list-devices", HTTPRequest);
-
 }
